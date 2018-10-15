@@ -31,10 +31,12 @@ public class ShoppingCartTest {
 
     }
 
+    @Test
     public void GIVEn_TwoHeadphone_And_oneSpeaker_THEN_HEadephoneDiscountedPriceSHouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         Item item = new Item("Headphones", "Audio", 150.00);
         item.setQuantity(2);
+        shoppingCart.addItem(item);
         shoppingCart.addItem(new Item("Speakers","Audio",85.00));
         BigDecimal discountedPriceForHEadPhone = shoppingCart.getItem("Headphones").getDiscountedPrice();
         BigDecimal discountedPriceForSpeaker = shoppingCart.getItem("Speakers").getDiscountedPrice();
