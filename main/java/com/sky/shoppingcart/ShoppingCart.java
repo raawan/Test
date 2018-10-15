@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class ShoppingCart {
+class ShoppingCart {
     private List<ShoppingItem> items;
 
     public void addItem(ShoppingItem... shoppingItems) {
         if (items == null) {
-            items = new ArrayList<ShoppingItem>();
+            items = new ArrayList<>();
         }
         items.addAll(Arrays.asList(shoppingItems));
     }
@@ -39,7 +39,7 @@ public class ShoppingCart {
 
     /*
     Assumption:
-        the batteries added on top of added batteries by cutomer, they are not readjusted to the existing set.
+        the batteries added on top of added batteries by customer, they are not readjusted to the existing set.
         For ex: if 6 batteries bought, the customer will get additional 3 batteries. Its not like they will be charge for 4 batteries and remaining 2
         will be free.
      */

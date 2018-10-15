@@ -2,10 +2,7 @@ package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Minal.Fulzele on 15/10/2018.
- */
-public class Itemfactory {
+class ItemFactory {
 
     public static Item createItem(String name) {
         switch (name) {

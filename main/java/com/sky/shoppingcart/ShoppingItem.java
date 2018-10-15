@@ -11,7 +11,7 @@ public class ShoppingItem {
     private Optional<BigDecimal> discountPrice;
 
     public ShoppingItem(String itemName, int quantity) {
-        this.item=Itemfactory.createItem(itemName);
+        this.item= ItemFactory.createItem(itemName);
         this.quantity=quantity;
     }
     public ShoppingItem(String itemName) {

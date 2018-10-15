@@ -27,7 +27,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEN__TwoHeadphone_And_OneSpeaker__THEN__HeadephoneDiscountedPriceShouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
+    public void GIVEN__TwoHeadphone_And_OneSpeaker__THEN__HeadphoneDiscountedPriceShouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("Headphones",2),new ShoppingItem("Speakers"));
         shoppingCart.calculateCost();
