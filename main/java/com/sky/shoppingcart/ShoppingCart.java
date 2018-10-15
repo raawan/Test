@@ -36,7 +36,7 @@ public class ShoppingCart {
                 );
 
         items.stream().filter(item -> item.getItem().getName().equalsIgnoreCase("AAA_Batteries"))
-                .forEach(item ->  item.setQuantity(3));
+                .forEach(item ->   item.setQuantity(item.getQuantity() + item.getQuantity()/2));
 
     }
 
