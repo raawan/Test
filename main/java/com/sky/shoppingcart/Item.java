@@ -2,27 +2,20 @@ package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
 
+/**
+ * Created by Minal.Fulzele on 15/10/2018.
+ */
 public class Item {
-    private String itemname;
-    private BigDecimal discountedPrice;
-
-    public void setDiscountedPrice(BigDecimal discountedPrice) {
-        this.discountedPrice = discountedPrice;
-    }
-
-    public Item(String itemName) {
-            this.itemname=itemName;
-    }
-
-    public String getItemname() {
-        return itemname;
-    }
-
-    public void setItemname(String itemname) {
-        this.itemname = itemname;
+    private String name;
+    private String type;
+    private BigDecimal price;
+    public Item(String name, String type, double price) {
+        this.name= name;
+        this.type=type;
+        this.price=new BigDecimal(price);
     }
 
     public BigDecimal getDiscountedPrice() {
-        return new BigDecimal("105");
+        return null;
     }
 }
