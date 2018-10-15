@@ -38,7 +38,7 @@ public class ShoppingCart {
     will be free.
          */
         items.stream().filter(item -> item.getItem().getName().equalsIgnoreCase("AAA_Batteries"))
-                .forEach(item ->   item.setQuantity(item.getQuantity() + item.getQuantity()/2));
+                .forEach(this::threeForThePriceOfTwoPromotion);
 
     }
 
@@ -47,6 +47,10 @@ public class ShoppingCart {
                 Optional.of(
                         item.getItem().getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
         );
+    }
+
+    public void threeForThePriceOfTwoPromotion(ShoppingItem item) {
+        item.setQuantity(item.getQuantity() + item.getQuantity()/2);
     }
 
     public BigDecimal getDiscountedPriceForItem(String itemName) {
