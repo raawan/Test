@@ -29,15 +29,24 @@ public class ShoppingCart {
     public void applyPromotions() {
 
         items.stream().filter(item -> item.getItem().getType().equalsIgnoreCase("Audio"))
-                .forEach(item -> item.setDiscountPrice(
-                        Optional.of(
-                                item.getItem().getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
-                        )
-                );
+                .forEach(this::discountThirtyPercentPromotion);
 
+        /*
+        Assumption:
+    the batteries added on top of added batteries by cutomer, they are not readjusted to the existing set.
+    For ex: if 6 batteries bought, the customer will get additional 3 batteries. Its not like they will be charge for 4 batteries and remaining 2
+    will be free.
+         */
         items.stream().filter(item -> item.getItem().getName().equalsIgnoreCase("AAA_Batteries"))
                 .forEach(item ->   item.setQuantity(item.getQuantity() + item.getQuantity()/2));
 
+    }
+
+    public void discountThirtyPercentPromotion(ShoppingItem item) {
+        item.setDiscountPrice(
+                Optional.of(
+                        item.getItem().getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
+        );
     }
 
     public BigDecimal getDiscountedPriceForItem(String itemName) {

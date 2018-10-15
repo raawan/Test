@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ShoppingCartTest {
 
     @Test
-    public void GIVEN_OneHeadphoneInShoppingCart_THEN_DiscountedPriceShouldBe_105() {
+    public void GIVEN__OneHeadphoneInShoppingCart__THEN__DiscountedPriceShouldBe_105() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("Headphones"));
         shoppingCart.applyPromotions();
@@ -18,7 +18,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEN__OneHeadphone_AND_OneSpeaker_THEN_DiscountedPriceForHeadphoneShouldBe_105_DoscountedPriceForSpeakerShouldBe_59dot5() {
+    public void GIVEN__OneHeadphone_AND_OneSpeaker__THEN__DiscountedPriceForHeadphoneShouldBe_105_DiscountedPriceForSpeakerShouldBe_59dot5() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("Headphones"),new ShoppingItem("Speakers"));
         shoppingCart.applyPromotions();
@@ -27,7 +27,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEN_TwoHeadphone_And_oneSpeaker_THEN_HEadephoneDiscountedPriceSHouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
+    public void GIVEN__TwoHeadphone_And_OneSpeaker__THEN__HeadephoneDiscountedPriceShouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("Headphones",2),new ShoppingItem("Speakers"));
         shoppingCart.applyPromotions();
@@ -36,7 +36,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEN_TwoAAABatteries_THEN_QuantityShouldIncreaseBy_1() {
+    public void GIVEN__TwoAAABatteries__THEN__QuantityShouldIncreaseBy_1() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("AAA_Batteries",2));
         shoppingCart.applyPromotions();
@@ -44,7 +44,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEN_FiveAAABatteries_THEN_QuantityShouldBeIncreaseBy_2(){
+    public void GIVEN__FiveAAABatteries__THEN__QuantityShouldBeIncreaseBy_2(){
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("AAA_Batteries",5));
         shoppingCart.applyPromotions();
