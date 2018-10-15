@@ -60,6 +60,7 @@ public class ShoppingCartTest {
 
 
         shoppingCart.calculateCost();
+        shoppingCart.printShoppingCart();
 
         assertTrue(new BigDecimal("50.00").equals(shoppingCart.getItem("Protein_Bars").getItem().getPrice()));
 

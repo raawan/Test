@@ -43,11 +43,11 @@ public class ShoppingCart {
         For ex: if 6 batteries bought, the customer will get additional 3 batteries. Its not like they will be charge for 4 batteries and remaining 2
         will be free.
      */
-    public void threeForThePriceOfTwoPromotion(ShoppingItem item) {
+    private void threeForThePriceOfTwoPromotion(ShoppingItem item) {
         item.setQuantity(item.getQuantity() + item.getQuantity()/2);
     }
 
-    public void discountThirtyPercentPromotion(ShoppingItem item) {
+    private void discountThirtyPercentPromotion(ShoppingItem item) {
         item.setDiscountPrice(
                 Optional.of(
                         item.getItem()
@@ -78,14 +78,16 @@ public class ShoppingCart {
         items.stream().filter(item -> item.getQuantity()>1)
                 .forEach(this::calculateItemCostBeforePromotion);
         this.applyPromotions();
+    }
 
+    public void printShoppingCart() {
         items.stream().forEach(item ->
         {
-            System.out.println(item.getItem().getName());
-            System.out.println(item.getItem().getType());
-            System.out.println(item.getItem().getPrice());
-            System.out.println(item.getDiscountPrice());
-            System.out.println(item.getQuantity());
+            System.out.println("name:"+item.getItem().getName());
+            System.out.println("type:"+item.getItem().getType());
+            System.out.println("original price:"+item.getItem().getPrice());
+            System.out.println("discounted price:"+item.getDiscountPrice());
+            System.out.println("final quantity:"+item.getQuantity());
             System.out.println("----------------------------");
         });
     }
