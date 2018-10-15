@@ -11,6 +11,7 @@ public class Item {
     private String type;
     private BigDecimal price;
     private int quantity;
+    private Optional<BigDecimal> discountedPrice;
 
 
     public int getQuantity() {
@@ -19,9 +20,6 @@ public class Item {
         }
         return quantity;
     }
-
-
-    private Optional<BigDecimal> discountedPrice;
 
     public Optional<BigDecimal> getDiscountedPrice() {
         return discountedPrice;

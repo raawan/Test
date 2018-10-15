@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Minal.Fulzele on 15/10/2018.
- */
 public class ShoppingCart {
     private List<Item> items;
 
     public void addItem(Item item) {
-        if(items==null){
+        if (items == null) {
             items = new ArrayList<Item>();
         }
         items.add(item);
@@ -40,7 +37,7 @@ public class ShoppingCart {
     }
 
     public BigDecimal getDiscountedPriceForItem(Item item) {
-        return  items.stream().filter(item1 -> item1.getName().equalsIgnoreCase(item.getName()))
+        return items.stream().filter(item1 -> item1.getName().equalsIgnoreCase(item.getName()))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Item does not exist"))
                 .getDiscountedPrice()
