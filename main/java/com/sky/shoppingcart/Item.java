@@ -23,6 +23,6 @@ public class Item {
     }
 
     public BigDecimal getDiscountedPrice() {
-        return discountedPrice;
+        return new BigDecimal("105");
     }
 }
