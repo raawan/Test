@@ -6,7 +6,8 @@ import java.util.Optional;
 public class ShoppingItem {
 
     private final Item item;
-    private final int quantity;
+
+    private int quantity;
     private Optional<BigDecimal> discountPrice;
 
     public ShoppingItem(String itemName, int quantity) {
@@ -24,6 +25,11 @@ public class ShoppingItem {
     public int getQuantity() {
         return quantity;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 
     public Optional<BigDecimal> getDiscountPrice() {
         return discountPrice;

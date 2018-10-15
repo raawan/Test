@@ -35,6 +35,9 @@ public class ShoppingCart {
                         )
                 );
 
+        items.stream().filter(item -> item.getItem().getName().equalsIgnoreCase("AAA_Batteries"))
+                .forEach(item ->  item.setQuantity(3));
+
     }
 
     public BigDecimal getDiscountedPriceForItem(String itemName) {
