@@ -2,9 +2,6 @@ package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Minal.Fulzele on 15/10/2018.
- */
 public class Item {
     private String name;
     private String type;

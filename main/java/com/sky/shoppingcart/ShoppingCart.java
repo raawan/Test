@@ -37,8 +37,8 @@ public class ShoppingCart {
 
     }
 
-    public BigDecimal getDiscountedPriceForItem(ShoppingItem item) {
-        return items.stream().filter(item1 -> item1.getItem().getName().equalsIgnoreCase(item.getItem().getName()))
+    public BigDecimal getDiscountedPriceForItem(String itemName) {
+        return items.stream().filter(item1 -> item1.getItem().getName().equalsIgnoreCase(itemName))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Item does not exist"))
                 .getDiscountPrice()

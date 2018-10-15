@@ -3,13 +3,10 @@ package com.sky.shoppingcart;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-/**
- * Created by Minal.Fulzele on 15/10/2018.
- */
 public class ShoppingItem {
 
     private final Item item;
-    private int quantity;
+    private final int quantity;
     private Optional<BigDecimal> discountPrice;
 
     public ShoppingItem(String itemName, int quantity) {
@@ -26,10 +23,6 @@ public class ShoppingItem {
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Optional<BigDecimal> getDiscountPrice() {
