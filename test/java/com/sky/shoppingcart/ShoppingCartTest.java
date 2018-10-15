@@ -19,5 +19,15 @@ public class ShoppingCartTest {
         assertTrue(new BigDecimal("105").equals(discountedPrice));
     }
 
+    @Test
+    public void GIVEN__OneHeadphone_AND_OneSpeaker_THEN_DiscountedPriceForHeadphoneShouldBe_105_DoscountedPriceForSpeakerShouldBe_59dot5() {
+        ShoppingCart shoppingCart =  new ShoppingCart();
+        shoppingCart.addItem(new Item("Headphones","Audio",150.00));
+        shoppingCart.addItem(new Item("Speakers","Audio",85.00));
+        BigDecimal discountedPriceForHEadPhone = shoppingCart.getItem("Headphones").getDiscountedPrice();
+        BigDecimal discountedPriceForSpeaker = shoppingCart.getItem("Speakers").getDiscountedPrice();
+        assertTrue(new BigDecimal("105").equals(discountedPriceForHEadPhone));
+        assertTrue(new BigDecimal("85.5").equals(discountedPriceForSpeaker));
 
+    }
 }
