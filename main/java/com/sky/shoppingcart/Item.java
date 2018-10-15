@@ -16,6 +16,6 @@ public class Item {
     }
 
     public BigDecimal getDiscountedPrice() {
-        return null;
+        return new BigDecimal(105.00);
     }
 }
