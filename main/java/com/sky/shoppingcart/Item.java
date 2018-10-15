@@ -32,10 +32,10 @@ public class Item {
         this.price = price;
     }
 
-    public Item(String name, String type, double price) {
+    public Item(String name, String type, BigDecimal price) {
         this.name = name;
         this.type = type;
-        this.price = new BigDecimal(price);
+        this.price = price;
     }
 
 

@@ -1,6 +1,7 @@
 package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ShoppingCart {
                 .orElseThrow(() -> new RuntimeException("Item does not exist"));
     }
 
-    public void applyPromotions() {
+    private void applyPromotions() {
 
         items.stream().filter(item -> item.getItem().getType().equalsIgnoreCase("Audio"))
                 .forEach(this::discountThirtyPercentPromotion);
@@ -49,7 +50,10 @@ public class ShoppingCart {
     public void discountThirtyPercentPromotion(ShoppingItem item) {
         item.setDiscountPrice(
                 Optional.of(
-                        item.getItem().getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
+                        item.getItem()
+                                .getPrice()
+                                .multiply(new BigDecimal("0.70")).setScale(2,RoundingMode.HALF_UP)
+                )
         );
     }
 
@@ -62,12 +66,19 @@ public class ShoppingCart {
     }
 
     public void calculateItemCostBeforePromotion(ShoppingItem item) {
-        item.getItem().setPrice(item.getItem().getPrice().multiply(new BigDecimal(item.getQuantity())));
+        item.getItem()
+                .setPrice(item.getItem()
+                        .getPrice()
+                        .multiply(
+                                new BigDecimal(item.getQuantity())).setScale(2, RoundingMode.HALF_UP)
+                );
     }
 
     public void calculateCost() {
         items.stream().filter(item -> item.getQuantity()>1)
                 .forEach(this::calculateItemCostBeforePromotion);
+        this.applyPromotions();
+
         items.stream().forEach(item ->
         {
             System.out.println(item.getItem().getName());
