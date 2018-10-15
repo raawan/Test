@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShoppingCartTest {
@@ -26,11 +27,19 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void GIVEn_TwoHeadphone_And_oneSpeaker_THEN_HEadephoneDiscountedPriceSHouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
+    public void GIVEN_TwoHeadphone_And_oneSpeaker_THEN_HEadephoneDiscountedPriceSHouldBe_210_SpeakerDiscountedPriceShouldBe_59dot5() {
         ShoppingCart shoppingCart =  new ShoppingCart();
         shoppingCart.addItem(new ShoppingItem("Headphones",2),new ShoppingItem("Speakers"));
         shoppingCart.applyPromotions();
         assertTrue(new BigDecimal("210.00").equals(shoppingCart.getDiscountedPriceForItem("Headphones")));
         assertTrue(new BigDecimal("59.50").equals(shoppingCart.getDiscountedPriceForItem("Speakers")));
+    }
+
+    @Test
+    public void GIVEN_TwoAAABatteries_THEN_QuantityShouldIncreaseBy_1() {
+        ShoppingCart shoppingCart =  new ShoppingCart();
+        shoppingCart.addItem(new ShoppingItem("AAA_Batteries",2));
+        shoppingCart.applyPromotions();
+        assertEquals(3,shoppingCart.getItem("AAA_Batteries").getQuantity());
     }
 }
