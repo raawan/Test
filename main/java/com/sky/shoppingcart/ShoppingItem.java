@@ -3,7 +3,7 @@ package com.sky.shoppingcart;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-public class ShoppingItem {
+class ShoppingItem {
 
     private final Item item;
 

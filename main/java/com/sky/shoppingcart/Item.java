@@ -2,7 +2,7 @@ package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
 
-public class Item {
+class Item {
     private final String name;
     private final String type;
     private BigDecimal price;
