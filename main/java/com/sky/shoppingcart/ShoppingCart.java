@@ -31,15 +31,19 @@ public class ShoppingCart {
         items.stream().filter(item -> item.getItem().getType().equalsIgnoreCase("Audio"))
                 .forEach(this::discountThirtyPercentPromotion);
 
-        /*
-        Assumption:
-    the batteries added on top of added batteries by cutomer, they are not readjusted to the existing set.
-    For ex: if 6 batteries bought, the customer will get additional 3 batteries. Its not like they will be charge for 4 batteries and remaining 2
-    will be free.
-         */
         items.stream().filter(item -> item.getItem().getName().equalsIgnoreCase("AAA_Batteries"))
                 .forEach(this::threeForThePriceOfTwoPromotion);
 
+    }
+
+    /*
+    Assumption:
+        the batteries added on top of added batteries by cutomer, they are not readjusted to the existing set.
+        For ex: if 6 batteries bought, the customer will get additional 3 batteries. Its not like they will be charge for 4 batteries and remaining 2
+        will be free.
+     */
+    public void threeForThePriceOfTwoPromotion(ShoppingItem item) {
+        item.setQuantity(item.getQuantity() + item.getQuantity()/2);
     }
 
     public void discountThirtyPercentPromotion(ShoppingItem item) {
@@ -49,15 +53,15 @@ public class ShoppingCart {
         );
     }
 
-    public void threeForThePriceOfTwoPromotion(ShoppingItem item) {
-        item.setQuantity(item.getQuantity() + item.getQuantity()/2);
-    }
-
     public BigDecimal getDiscountedPriceForItem(String itemName) {
         return items.stream().filter(item1 -> item1.getItem().getName().equalsIgnoreCase(itemName))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Item does not exist"))
                 .getDiscountPrice()
                 .orElseGet(() -> new BigDecimal("0.00"));
+    }
+
+    public void calculateCost() {
+
     }
 }

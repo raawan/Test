@@ -50,4 +50,18 @@ public class ShoppingCartTest {
         shoppingCart.applyPromotions();
         assertEquals(7,shoppingCart.getItem("AAA_Batteries").getQuantity());
     }
+
+    @Test
+    public void GIVEN__1Speaker_5AAABatteries_2ProteinBars__THEN__theShoppingCartShouldContain_1Speaker_7AAABatteries_2ProteinBars_And_SpeakerDiscountedPrice() {
+        ShoppingCart shoppingCart =  new ShoppingCart();
+        shoppingCart.addItem(new ShoppingItem("Speakers"));
+        shoppingCart.addItem(new ShoppingItem("AAA_Batteries",5));
+        shoppingCart.addItem(new ShoppingItem("Protein_Bars",2));
+        shoppingCart.applyPromotions();
+
+        shoppingCart.calculateCost();
+
+        assertTrue(shoppingCart.getItem("Protein_Bars").getItem().getPrice().equals(new BigDecimal(50.00)));
+
+    }
 }

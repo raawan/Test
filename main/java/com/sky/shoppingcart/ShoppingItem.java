@@ -30,7 +30,6 @@ public class ShoppingItem {
         this.quantity = quantity;
     }
 
-
     public Optional<BigDecimal> getDiscountPrice() {
         return discountPrice;
     }
