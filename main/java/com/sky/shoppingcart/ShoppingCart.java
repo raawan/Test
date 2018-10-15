@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class ShoppingCart {
-    private List<Item> items;
+    private List<ShoppingItem> items;
 
-    public void addItem(Item item) {
+    public void addItem(ShoppingItem item) {
         if (items == null) {
-            items = new ArrayList<Item>();
+            items = new ArrayList<ShoppingItem>();
         }
         items.add(item);
     }
@@ -18,29 +18,29 @@ public class ShoppingCart {
     /*
     Assuming the names of the products are unique based on the given data
      */
-    public Item getItem(String name) {
+    public ShoppingItem getItem(String name) {
         return items.stream()
-                .filter(item -> item.getName().equalsIgnoreCase(name))
+                .filter(item -> item.getItem().getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Item does not exist"));
     }
 
     public void getDiscountedPrice() {
 
-        items.stream().filter(item -> item.getType().equalsIgnoreCase("Audio"))
-                .forEach(item -> item.setDiscountedPrice(
+        items.stream().filter(item -> item.getItem().getType().equalsIgnoreCase("Audio"))
+                .forEach(item -> item.setDiscountPrice(
                         Optional.of(
-                                item.getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
+                                item.getItem().getPrice().multiply(new BigDecimal("0.70").multiply(new BigDecimal(item.getQuantity()))))
                         )
                 );
 
     }
 
-    public BigDecimal getDiscountedPriceForItem(Item item) {
-        return items.stream().filter(item1 -> item1.getName().equalsIgnoreCase(item.getName()))
+    public BigDecimal getDiscountedPriceForItem(ShoppingItem item) {
+        return items.stream().filter(item1 -> item1.getItem().getName().equalsIgnoreCase(item.getItem().getName()))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Item does not exist"))
-                .getDiscountedPrice()
+                .getDiscountPrice()
                 .orElseGet(() -> new BigDecimal("0.00"));
     }
 }
