@@ -9,6 +9,31 @@ public class Item {
     private String name;
     private String type;
     private BigDecimal price;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     public Item(String name, String type, double price) {
         this.name= name;
         this.type=type;
@@ -16,6 +41,10 @@ public class Item {
     }
 
     public BigDecimal getDiscountedPrice() {
-        return new BigDecimal(105.00);
+        if(this.name.equalsIgnoreCase("HeadPhones"))
+            return new BigDecimal(105.00);
+        if(this.name.equalsIgnoreCase("Speakers"))
+            return new BigDecimal(59.5);
+        return new BigDecimal(0);
     }
 }

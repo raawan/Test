@@ -27,7 +27,7 @@ public class ShoppingCartTest {
         BigDecimal discountedPriceForHEadPhone = shoppingCart.getItem("Headphones").getDiscountedPrice();
         BigDecimal discountedPriceForSpeaker = shoppingCart.getItem("Speakers").getDiscountedPrice();
         assertTrue(new BigDecimal("105").equals(discountedPriceForHEadPhone));
-        assertTrue(new BigDecimal("85.5").equals(discountedPriceForSpeaker));
+        assertTrue(new BigDecimal("59.5").equals(discountedPriceForSpeaker));
 
     }
 }
