@@ -42,4 +42,12 @@ public class ShoppingCartTest {
         shoppingCart.applyPromotions();
         assertEquals(3,shoppingCart.getItem("AAA_Batteries").getQuantity());
     }
+
+    @Test
+    public void GIVEN_FiveAAABatteries_THEN_QuantityShouldBeIncreaseBy_2(){
+        ShoppingCart shoppingCart =  new ShoppingCart();
+        shoppingCart.addItem(new ShoppingItem("AAA_Batteries",5));
+        shoppingCart.applyPromotions();
+        assertEquals(7,shoppingCart.getItem("AAA_Batteries").getQuantity());
+    }
 }
