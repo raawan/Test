@@ -54,7 +54,7 @@ public class ShoppingCartTest {
     @Test
     public void GIVEN__1Speaker_5AAABatteries_2ProteinBars__THEN__theShoppingCartShouldContain_1Speaker_7AAABatteries_2ProteinBars_And_SpeakerDiscountedPrice() {
         ShoppingCart shoppingCart =  new ShoppingCart();
-        shoppingCart.addItem(new ShoppingItem("Speakers",2));
+        shoppingCart.addItem(new ShoppingItem("Speakers",1));
         shoppingCart.addItem(new ShoppingItem("AAA_Batteries",5));
         shoppingCart.addItem(new ShoppingItem("Protein_Bars",2));
 
