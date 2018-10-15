@@ -61,9 +61,13 @@ public class ShoppingCart {
                 .orElseGet(() -> new BigDecimal("0.00"));
     }
 
+    public void calculateItemCostBeforePromotion(ShoppingItem item) {
+        item.getItem().setPrice(item.getItem().getPrice().multiply(new BigDecimal(item.getQuantity())));
+    }
+
     public void calculateCost() {
         items.stream().filter(item -> item.getQuantity()>1)
-                .forEach(item -> item.getItem().setPrice(item.getItem().getPrice().multiply(new BigDecimal(item.getQuantity()))));
+                .forEach(this::calculateItemCostBeforePromotion);
         items.stream().forEach(item ->
         {
             System.out.println(item.getItem().getName());
