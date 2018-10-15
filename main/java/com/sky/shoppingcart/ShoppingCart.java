@@ -62,6 +62,16 @@ public class ShoppingCart {
     }
 
     public void calculateCost() {
-
+        items.stream().filter(item -> item.getQuantity()>1)
+                .forEach(item -> item.getItem().setPrice(item.getItem().getPrice().multiply(new BigDecimal(item.getQuantity()))));
+        items.stream().forEach(item ->
+        {
+            System.out.println(item.getItem().getName());
+            System.out.println(item.getItem().getType());
+            System.out.println(item.getItem().getPrice());
+            System.out.println(item.getDiscountPrice());
+            System.out.println(item.getQuantity());
+            System.out.println("----------------------------");
+        });
     }
 }
