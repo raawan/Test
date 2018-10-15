@@ -11,10 +11,9 @@ public class ShoppingCartTest {
     @Test
     public void GIVEN_OneHeadphoneInShoppingCart_THEN_DiscountedPriceShouldBe_105() {
         ShoppingCart shoppingCart =  new ShoppingCart();
-
         ShoppingItem item = new ShoppingItem("Headphones");
         shoppingCart.addItem(item);
-        shoppingCart.getDiscountedPrice();
+        shoppingCart.applyPromotions();
         assertTrue(new BigDecimal("105.00").equals(shoppingCart.getDiscountedPriceForItem(item)));
     }
 
@@ -23,9 +22,8 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart =  new ShoppingCart();
         ShoppingItem item1 = new ShoppingItem("Headphones");
         ShoppingItem item2 = new ShoppingItem("Speakers");
-        shoppingCart.addItem(item1);
-        shoppingCart.addItem(item2);
-        shoppingCart.getDiscountedPrice();
+        shoppingCart.addItem(item1,item2);
+        shoppingCart.applyPromotions();
         assertTrue(new BigDecimal("105.00").equals(shoppingCart.getDiscountedPriceForItem(item1)));
         assertTrue(new BigDecimal("59.50").equals(shoppingCart.getDiscountedPriceForItem(item2)));
     }
@@ -35,9 +33,8 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart =  new ShoppingCart();
         ShoppingItem item = new ShoppingItem("Headphones",2);
         ShoppingItem item1 = new ShoppingItem("Speakers");
-        shoppingCart.addItem(item);
-        shoppingCart.addItem(item1);
-        shoppingCart.getDiscountedPrice();
+        shoppingCart.addItem(item,item1);
+        shoppingCart.applyPromotions();
         assertTrue(new BigDecimal("210.00").equals(shoppingCart.getDiscountedPriceForItem(item)));
         assertTrue(new BigDecimal("59.50").equals(shoppingCart.getDiscountedPriceForItem(item1)));
     }

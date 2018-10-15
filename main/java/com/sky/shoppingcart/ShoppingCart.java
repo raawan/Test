@@ -2,17 +2,18 @@ package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public class ShoppingCart {
     private List<ShoppingItem> items;
 
-    public void addItem(ShoppingItem item) {
+    public void addItem(ShoppingItem... shoppingItems) {
         if (items == null) {
             items = new ArrayList<ShoppingItem>();
         }
-        items.add(item);
+        items.addAll(Arrays.asList(shoppingItems));
     }
 
     /*
@@ -25,7 +26,7 @@ public class ShoppingCart {
                 .orElseThrow(() -> new RuntimeException("Item does not exist"));
     }
 
-    public void getDiscountedPrice() {
+    public void applyPromotions() {
 
         items.stream().filter(item -> item.getItem().getType().equalsIgnoreCase("Audio"))
                 .forEach(item -> item.setDiscountPrice(
