@@ -65,7 +65,7 @@ class ShoppingCart {
                 .orElseGet(() -> new BigDecimal("0.00"));
     }
 
-    public void calculateItemCostBeforePromotion(ShoppingItem item) {
+    private void calculateItemCostBeforePromotion(ShoppingItem item) {
         item.getItem()
                 .setPrice(item.getItem()
                         .getPrice()
@@ -81,7 +81,7 @@ class ShoppingCart {
     }
 
     public void printShoppingCart() {
-        items.stream().forEach(item ->
+        items.forEach(item ->
         {
             System.out.println("name:"+item.getItem().getName());
             System.out.println("type:"+item.getItem().getType());
