@@ -1,6 +1,7 @@
 package com.sky.shoppingcart;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 /**
  * Created by Minal.Fulzele on 15/10/2018.
@@ -9,6 +10,26 @@ public class Item {
     private String name;
     private String type;
     private BigDecimal price;
+    private int quantity;
+
+
+    public int getQuantity() {
+        if(quantity==0){
+            return 1;
+        }
+        return quantity;
+    }
+
+
+    private Optional<BigDecimal> discountedPrice;
+
+    public Optional<BigDecimal> getDiscountedPrice() {
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(Optional<BigDecimal> discountedPrice) {
+        this.discountedPrice = discountedPrice;
+    }
 
     public String getName() {
         return name;
@@ -40,11 +61,9 @@ public class Item {
         this.price=new BigDecimal(price);
     }
 
-    public BigDecimal getDiscountedPrice() {
-        if(this.name.equalsIgnoreCase("HeadPhones"))
-            return new BigDecimal(105.00);
-        if(this.name.equalsIgnoreCase("Speakers"))
-            return new BigDecimal(59.5);
-        return new BigDecimal(0);
+
+
+    public void setQuantity(int qty) {
+        this.quantity = qty;
     }
 }
